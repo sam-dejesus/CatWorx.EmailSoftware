@@ -1,0 +1,58 @@
+.form-header{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(223, 223, 223);
+    color: rgb(88, 87, 87);
+    padding: 10px;
+    margin: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+  }
+
+  .card{
+    margin: 2rem;
+    border: 1px solid rgb(214, 213, 213);
+     background-color: lightgray;
+  }
+
+  .card-body{
+
+    margin-bottom: 10px;
+
+  }
+  
+  .form-inputs-container {
+    padding: 5px;
+    text-align: center;
+  
+    
+  }
+
+  .logoDiv{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    flex-direction: column;
+    margin-top: 30px;
+    margin-bottom: 80px;
+  
+  }
+  .logoName{
+    color: lightgray;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  .logo{
+    color: lightgray;
+    font-size: 150px;
+
+  }
+.form-inputs-container{
+   
+}
+  .ButtonContainer{
+
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
