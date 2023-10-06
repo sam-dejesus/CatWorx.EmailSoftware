@@ -21,10 +21,10 @@ export default function Login() {
           <form className="">
             <div className="form-inputs-container">
               <TextField
-                label="Your username"
+                label="Username"
                 variant="outlined"
                 fullWidth
-                placeholder="Your username"
+                
                 name="username"
               />
             </div>
