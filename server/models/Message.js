@@ -1,8 +1,12 @@
 const { Schema, model } = require('mongoose');
 
 const messageSchema= new Schema({
-
- user: {
+id: {
+  type: String,
+  required: true,  
+  unique: true,
+},
+user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User' 
       },

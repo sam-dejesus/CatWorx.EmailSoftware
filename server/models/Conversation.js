@@ -1,6 +1,11 @@
 const mongoose = require('mongoose');
 
 const conversationSchema = new mongoose.Schema({
+  id: {
+    type: String,
+    required: true,  
+    unique: true,
+  },
   participants: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User'
