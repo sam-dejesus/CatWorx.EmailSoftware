@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const { Schema, model } = require('mongoose');
 
 const messageSchema= new Schema({
@@ -7,8 +8,8 @@ id: {
   unique: true,
 },
 user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User' 
+  type: mongoose.Schema.Types.ObjectId,
+   ref: 'User' 
       },
 conversation: {
     type: mongoose.Schema.Types.ObjectId,
