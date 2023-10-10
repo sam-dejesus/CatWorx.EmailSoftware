@@ -1,11 +1,52 @@
-import React from "react";
+import React, { useState } from "react";
 import './login.css'
+import { Link } from "react-router-dom";
+import { useMutation } from "@apollo/client";
+import { LOGIN_USER } from "../../utils/mutations";
+
 import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 import {GiSaberToothedCatHead} from "react-icons/gi"
 
+import { login } from "../../utils/auth";
 
-export default function Login() {
+
+const Login = (props) => {
+  const [formState, setFormState] = useState({ username: "", password: "" });
+  const [loginMutation, { error, data }] = useMutation(LOGIN_USER);
+
+//-----------------------
+  // update state based on form input changes
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  // submit form
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    try {
+      const { data } = await loginMutation({
+        variables: { ...formState },
+      });
+
+      login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+
+    // clear form values
+    setFormState({
+      email: "",
+      password: "",
+    });
+  };
+//-----------------------
   return (
     
     <main className="">
@@ -18,17 +59,17 @@ export default function Login() {
       <div className="card">
         <h1 className="form-header">Welcome</h1>
         <div className="card-body">
-          <form className="">
+          <form className="" onSubmit={handleFormSubmit}>
             <div className="form-inputs-container">
               <TextField
-                label="Username"
+                label="Email"
                 variant="outlined"
                 fullWidth
-                
-                name="username"
+                onChange={handleChange}
+                name="email"
               />
             </div>
-            <div className="form-inputs-container">
+            <div className="form-inputs-container" >
               <TextField
                 label="Password"
                 variant="outlined"
@@ -36,6 +77,7 @@ export default function Login() {
                 placeholder="******"
                 name="password"
                 type="password"
+                onChange={handleChange}
               />
             </div>
             <div className="ButtonContainer">
@@ -51,7 +93,10 @@ export default function Login() {
                 color="warning"
                 type="submit"
               >
-                Help
+                <Link className="lessImportantLink" to="/signup">
+                   Help
+                </Link>
+               
               </Button>
             </div>
           </form>
@@ -60,3 +105,6 @@ export default function Login() {
     </main>
   );
 }
+
+
+export default Login;

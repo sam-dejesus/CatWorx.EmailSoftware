@@ -14,8 +14,8 @@ const resolvers = {
 
     Mutation: {
 
-        login: async (parent, { username, password }) => {
-            const user = await User.findOne({ username });
+        login: async (parent, { email, password }) => {
+            const user = await User.findOne({ email });
       
             if (!user) {
               throw new AuthenticationError('No user found with this username address');
@@ -35,3 +35,5 @@ const resolvers = {
 
 
 }
+
+module.exports = resolvers;

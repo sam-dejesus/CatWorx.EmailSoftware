@@ -12,16 +12,6 @@ const Profile = () => {
     const navigate = useNavigate();
   
   
-  
-  
-    const searchFlights = () => {
-      navigate("/search");
-    };
-  
-    const postFlightRequest = () => {
-      navigate("/home");
-    };
-    
     const handleImageChange = (e) => {
       const file = e.target.files[0];
   
@@ -62,18 +52,16 @@ const Profile = () => {
             )}
             <h1>{userData.username}'s Profile</h1>
             {/* <p>Email: {userData.email}</p> */}
-            Status: {userData.status ? "Nanny" : "Passenger"}
+            Status: {userData.status ? "admin" : "test"}
             {userData.status ? (
               <div>
                 
                 <h2>Menu</h2>
-                <button onClick={searchFlights} className="Btn">Search Flights</button>{" "}
-                <button onClick={postFlightRequest} className="Btn">Post Flights</button>
               </div>
             ) : (
               <>
                 <h2>ready!!!</h2>
-                <button onClick={postFlightRequest} className="Btn">Post Flights</button>
+
               </>
             )}
           </div>
