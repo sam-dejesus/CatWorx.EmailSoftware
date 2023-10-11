@@ -5,11 +5,14 @@ import './profile.css'
 
 const Profile = () => {
     const [userData, setUserData] = useState(getProfile().data);
+    console.log(userData)
   
     const [profileImagePreviewUrl, setProfileImagePreviewUrl] = useState(null);
   
   
     const navigate = useNavigate();
+
+
   
   
     const handleImageChange = (e) => {
@@ -50,17 +53,48 @@ const Profile = () => {
                 className="test"
               />
             )}
-            <h1>{userData.username}'s Profile</h1>
-            {/* <p>Email: {userData.email}</p> */}
-            Status: {userData.status ? "admin" : "test"}
-            {userData.status ? (
+            <h1>{userData.firstName}'s Profile</h1>
+
+            <div className="userOptions">
+            <button>compose new message</button>
+            <button>view contacts</button>
+            <button>view inbox</button>
+
+              
+
+            </div>
+            
+            Status: {userData.admin ? "admin" : "test"}
+            {userData.admin ? (
               <div>
                 
-                <h2>Menu</h2>
+                <h2>Admin Dashboard</h2>
+                <div className="adminOptions">
+                  <button>add new user</button>
+                  <button>delete user</button>
+                  <button></button>
+                </div>
               </div>
             ) : (
               <>
-                <h2>ready!!!</h2>
+                
+
+              </>
+            )}
+
+            {userData.rootUser ? (
+              <div>
+                
+                <h2>Root User Dashboard</h2>
+                <div className="rootUserOptions">
+                  <button>add new admin</button>
+                  <button>delete admin</button>
+                  <button>self destruct</button>
+                </div>
+              </div>
+            ) : (
+              <>
+                
 
               </>
             )}

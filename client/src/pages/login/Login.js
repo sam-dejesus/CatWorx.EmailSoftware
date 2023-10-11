@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import './login.css'
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useMutation } from "@apollo/client";
 import { LOGIN_USER } from "../../utils/mutations";
 
@@ -9,6 +9,7 @@ import Button from '@mui/material/Button'
 import {GiSaberToothedCatHead} from "react-icons/gi"
 
 import { login } from "../../utils/auth";
+
 
 
 const Login = (props) => {
@@ -24,6 +25,12 @@ const Login = (props) => {
       ...formState,
       [name]: value,
     });
+  };
+
+  const navigate = useNavigate();
+
+  const help = () => {
+    navigate("/help");
   };
 
   // submit form
@@ -92,10 +99,11 @@ const Login = (props) => {
                 variant="contained"
                 color="warning"
                 type="submit"
+                onClick={help}
               >
-                <Link className="lessImportantLink" to="/signup">
+                
                    Help
-                </Link>
+                
                
               </Button>
             </div>
