@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { getProfile } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
+import Button from '@mui/material/Button'
+import { BsEnvelopePlusFill } from "react-icons/bs";
 import './profile.css'
 
 const Profile = () => {
@@ -55,24 +57,59 @@ const Profile = () => {
             )}
             <h1>{userData.firstName}'s Profile</h1>
 
-            <div className="userOptions">
-            <button>compose new message</button>
-            <button>view contacts</button>
-            <button>view inbox</button>
+            <div className="dashboard">
+            <div className="userOptions options ">
+            <Button 
+                className="mx-3"
+                variant="outlined"
+                color="warning"
+                type="submit"
+              >compose new message <BsEnvelopePlusFill className="icons"/> </Button>
+              
+            <Button 
+            className="mx-3"
+             variant="outlined"
+                color="warning"
+                type="submit"
+                >view contacts</Button>
+            <Button
+            className="mx-3" 
+             variant="outlined"
+                color="warning"
+                type="submit"
+                >view inbox</Button>
+            </div>
+
 
               
 
             </div>
             
-            Status: {userData.admin ? "admin" : "test"}
             {userData.admin ? (
-              <div>
-                
+
+              <div className=" dashboard">
                 <h2>Admin Dashboard</h2>
-                <div className="adminOptions">
-                  <button>add new user</button>
-                  <button>delete user</button>
-                  <button></button>
+                <div className="adminOptions options">
+                  <Button 
+                  className="mx-3"
+                   variant="outlined"
+                color="warning"
+                type="submit"
+                >add new user</Button>
+                  <Button 
+                  className="mx-3"
+                   variant="outlined"
+                color="warning"
+                type="submit"
+                >delete user</Button>
+                  <Button 
+                  className="mx-3"
+                   variant="outlined"
+                color="warning"
+                type="submit"
+                >
+                  test
+                </Button>
                 </div>
               </div>
             ) : (
@@ -83,13 +120,28 @@ const Profile = () => {
             )}
 
             {userData.rootUser ? (
-              <div>
+              <div className=" dashboard">
                 
                 <h2>Root User Dashboard</h2>
-                <div className="rootUserOptions">
-                  <button>add new admin</button>
-                  <button>delete admin</button>
-                  <button>self destruct</button>
+                <div className="rootUserOptions options">
+                  <Button
+                  className="mx-3" 
+                   variant="outlined"
+                color="warning"
+                type="submit"
+                >add new admin</Button>
+                  <Button
+                  className="mx-3" 
+                   variant="outlined"
+                color="warning"
+                type="submit"
+                >delete admin</Button>
+                  <Button
+                  className="mx-3" 
+                   variant="outlined"
+                color="warning"
+                type="submit"
+                >self destruct</Button>
                 </div>
               </div>
             ) : (

@@ -1,0 +1,25 @@
+.dashboard{
+
+}
+.options{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    height: 25vh;
+    width: 100%;
+    border: 2px solid grey;
+    
+}
+.userOptions{}
+.adminOptions{}
+.rootUserOptions{}
+
+Button{
+
+}
+
+.icons{
+font-size: 20px;
+margin-left: 10px;
+}

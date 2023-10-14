@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from './pages/login/Login'
 import Profile from "./pages/profile/Profile";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 // Construct our main GraphQL API endpoint
 const httpLink = createHttpLink({
