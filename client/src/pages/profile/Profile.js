@@ -2,7 +2,17 @@ import React, { useState } from "react";
 import { getProfile } from "../../utils/auth";
 import { useNavigate } from "react-router-dom";
 import Button from '@mui/material/Button'
+
 import { BsEnvelopePlusFill } from "react-icons/bs";
+import { BsFillPersonPlusFill } from "react-icons/bs";
+import { BiSolidContact } from "react-icons/bi";
+import { FaUserMinus } from "react-icons/fa";
+import { HiMail } from "react-icons/hi";
+import { PiGearSixFill } from "react-icons/pi";
+import { FaRegUserCircle } from "react-icons/fa";
+
+
+
 import './profile.css'
 
 const Profile = () => {
@@ -39,6 +49,7 @@ const Profile = () => {
           <div className="profileDiv">
   
               <label htmlFor="profileImageInput" className="mt-3 ms-5 ps-5">
+                <FaRegUserCircle className="stockimg"/>
               </label>
               <input
                 type="file"
@@ -55,7 +66,16 @@ const Profile = () => {
                 className="test"
               />
             )}
-            <h1>{userData.firstName}'s Profile</h1>
+            <div className="d-flex flex-row justify-content-between">
+              <h1>{userData.firstName}'s Profile</h1>
+              <Button 
+                className=""
+                color="secondary"
+                type="submit"
+              > < PiGearSixFill className="settingsBtn" /> </Button>
+             
+            </div>
+            
 
             <div className="dashboard">
             <div className="userOptions options ">
@@ -71,13 +91,13 @@ const Profile = () => {
              variant="outlined"
                 color="warning"
                 type="submit"
-                >view contacts</Button>
+                >view contacts < BiSolidContact className="icons"/></Button>
             <Button
             className="mx-3" 
              variant="outlined"
                 color="warning"
                 type="submit"
-                >view inbox</Button>
+                >view inbox <HiMail className='icons' /></Button>
             </div>
 
 
@@ -95,13 +115,13 @@ const Profile = () => {
                    variant="outlined"
                 color="warning"
                 type="submit"
-                >add new user</Button>
+                >add new user < BsFillPersonPlusFill className="icons"/> </Button>
                   <Button 
                   className="mx-3"
                    variant="outlined"
                 color="warning"
                 type="submit"
-                >delete user</Button>
+                >delete user <FaUserMinus className="icons"/></Button>
                   <Button 
                   className="mx-3"
                    variant="outlined"
@@ -129,13 +149,13 @@ const Profile = () => {
                    variant="outlined"
                 color="warning"
                 type="submit"
-                >add new admin</Button>
+                >add new admin < BsFillPersonPlusFill className="icons"/></Button>
                   <Button
                   className="mx-3" 
                    variant="outlined"
                 color="warning"
                 type="submit"
-                >delete admin</Button>
+                >delete admin  <FaUserMinus className="icons"/></Button>
                   <Button
                   className="mx-3" 
                    variant="outlined"

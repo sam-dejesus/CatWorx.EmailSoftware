@@ -18,8 +18,14 @@
 Button{
 
 }
-
+.settingsBtn{
+font-size: 30px;
+}
 .icons{
-font-size: 20px;
+font-size: 30px;
 margin-left: 10px;
+}
+.stockimg{
+    font-size: 130px;
+    margin-bottom: 10px;
 }
