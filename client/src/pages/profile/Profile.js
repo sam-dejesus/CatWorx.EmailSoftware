@@ -10,6 +10,7 @@ import { FaUserMinus } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
 import { PiGearSixFill } from "react-icons/pi";
 import { FaRegUserCircle } from "react-icons/fa";
+import { logout } from "../../utils/auth";
 
 
 
@@ -25,7 +26,13 @@ const Profile = () => {
     const navigate = useNavigate();
 
 
+    const logoutAction = (event) => {
+      event.preventDefault();
+      navigate("/")
+      logout();
   
+  
+    };
   
     const handleImageChange = (e) => {
       const file = e.target.files[0];
@@ -68,6 +75,13 @@ const Profile = () => {
             )}
             <div className="d-flex flex-row justify-content-between">
               <h1>{userData.firstName}'s Profile</h1>
+              <Button 
+                className=""
+                color="secondary"
+                type="submit"
+                onClick={logoutAction}
+              > Log out </Button>
+
               <Button 
                 className=""
                 color="secondary"

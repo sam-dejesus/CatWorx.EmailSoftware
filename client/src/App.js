@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import './App.css';
 import Login from './pages/login/Login'
 import Profile from "./pages/profile/Profile";
+import Help from './pages/help/Help'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Construct our main GraphQL API endpoint
@@ -43,8 +44,8 @@ function App() {
             <Routes>
               {/* <Route path="request" element={<Request />} /> */}
               <Route path="/" element={<Login />} />
-              {/* <Route path="/search" element={<SearchBar />} />
-              <Route path="/home" element={<Home />} /> */}
+              {/* <Route path="/search" element={<SearchBar />} />*/}
+              <Route path="/help" element={<Help />} /> 
 
               {/* <Route path="/signup" element={<Signup />} /> */}
               <Route path="/profile" element={<Profile />} />
