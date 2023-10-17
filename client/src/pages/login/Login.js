@@ -101,10 +101,7 @@ const Login = (props) => {
                 type="submit"
                 onClick={help}
               >
-                
-                   Help
-                
-               
+                Help
               </Button>
             </div>
           </form>

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import './help.css'
 
 const Help = () => {
   return (
@@ -12,7 +13,9 @@ const Help = () => {
       noValidate
       autoComplete="off"
     >
-      <div>
+      <div className='formDiv'>
+        <h1>Fill out the form below</h1>
+        <p>Please fill out every box </p>
         <TextField
           required
           id="outlined-required"
@@ -28,6 +31,12 @@ const Help = () => {
           required
           id="outlined-disabled"
           label="Id Number"
+        />
+
+        <TextField
+          required
+          id="outlined-disabled"
+          label="Personal Email"
         />
         
       </div>
