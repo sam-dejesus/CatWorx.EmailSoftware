@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"cd server && npm start\" \"cd client && npm start\""
   },
   "repository": {
     "type": "git",
@@ -15,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/sam-dejesus/CatWorx.EmailSoftware/issues"
   },
-  "homepage": "https://github.com/sam-dejesus/CatWorx.EmailSoftware#readme"
+  "homepage": "https://github.com/sam-dejesus/CatWorx.EmailSoftware#readme",
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
 }

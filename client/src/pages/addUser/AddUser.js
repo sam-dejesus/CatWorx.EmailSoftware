@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import { useMutation } from "@apollo/client";
+import {ADD_USER} from '../../utils/mutations'
+
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
@@ -8,6 +11,47 @@ import 'bootstrap'
 
 
 const AddUser = () => {
+  const [formState, setFormState] = useState({
+    firstName: "",
+    lastName: "",
+    employeeID: 0,
+    email: "",
+    password: "password",
+    admin: false,
+    rootUser: false,
+  });
+
+  const [addUser, { error, data }] = useMutation(ADD_USER);
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+  
+    let fieldValue = value;
+  
+
+  
+    setFormState({
+      ...formState,
+      [name]: fieldValue,
+    });
+  };
+
+  const handleFormSubmit = async (event) => {
+    event.preventDefault();
+    console.log(formState);
+    formState.employeeID = parseInt(formState.employeeID)
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState },
+      });
+
+    
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
 return(
     <div>
      <Box
@@ -19,13 +63,16 @@ return(
       noValidate
       autoComplete="off"
     >
-      <div className='formDiv ps-5'>
+      <div className='formDiv ps-5' onSubmit={handleFormSubmit}>
         <h1 className='mt-4'>Fill out the form below</h1>
 
         <TextField
           required
           id="outlined-required"
           label="Employee ID"
+          name="employeeID"
+          value={formState.employeeID}
+          onChange={handleChange}
           
         />
 
@@ -33,12 +80,18 @@ return(
           required
           id="outlined-required"
           label="First Name"
+          name="firstName"
+          value={formState.firstName}
+          onChange={handleChange}
           
         />
         <TextField
           required
           id="outlined-disabled"
           label="Last Name"
+          name="lastName"
+          value={formState.lastName}
+          onChange={handleChange}
         />
 
 
@@ -46,6 +99,9 @@ return(
           required
           id="outlined-disabled"
           label="Email"
+          name="email"
+          value={formState.email}
+          onChange={handleChange}
         />
         
         <br/>
@@ -60,7 +116,7 @@ return(
           
         /> */}
     <Stack direction="row" spacing={2} className='mb-3 mt-1'>
-      <Button variant="contained" endIcon={<SendIcon />}>
+      <Button variant="contained" endIcon={<SendIcon />} onClick={handleFormSubmit}>
         Send
       </Button>
     </Stack>

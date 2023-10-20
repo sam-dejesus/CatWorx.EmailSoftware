@@ -13,6 +13,11 @@ const resolvers = {
     },
 
     Mutation: {
+      addUser: async (parent, { firstName, lastName, admin, email, password, rootUser, employeeID }) => {
+    
+        return await User.create({ firstName, lastName, admin, email, password, rootUser, employeeID });
+      }, 
+
 
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });

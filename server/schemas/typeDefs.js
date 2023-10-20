@@ -40,12 +40,13 @@ const typeDefs = gql`
 
   type Mutation {
     addUser(
-      employeID: Int!
+      employeeID: Int!
       firstName: String!
       lastName: String!
       email: String!
       admin: Boolean!
       rootUser: Boolean!
+      password: String!
     ): Auth
 
     addMessage(
