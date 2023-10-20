@@ -33,6 +33,10 @@ const Profile = () => {
   
   
     };
+
+    const addUser = ()=>{
+      navigate("/add user")
+    }
   
     const handleImageChange = (e) => {
       const file = e.target.files[0];
@@ -125,8 +129,9 @@ const Profile = () => {
                 <h2>Admin Dashboard</h2>
                 <div className="adminOptions options">
                   <Button 
-                  className="mx-3"
-                   variant="outlined"
+                  onClick={addUser}
+                className="mx-3"
+                variant="outlined"
                 color="warning"
                 type="submit"
                 >add new user < BsFillPersonPlusFill className="icons"/> </Button>
