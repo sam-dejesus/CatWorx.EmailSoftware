@@ -17,7 +17,7 @@ import { logout } from "../../utils/auth";
 import './profile.css'
 
 const Profile = () => {
-    const [userData, setUserData] = useState(getProfile().data);
+    const [userData] = useState(getProfile().data);
     console.log(userData)
   
     const [profileImagePreviewUrl, setProfileImagePreviewUrl] = useState(null);
@@ -36,6 +36,10 @@ const Profile = () => {
 
     const addUser = ()=>{
       navigate("/add user")
+    }
+
+    const deleteUser = ()=>{
+      navigate("/delete user")
     }
   
     const handleImageChange = (e) => {
@@ -136,6 +140,7 @@ const Profile = () => {
                 type="submit"
                 >add new user < BsFillPersonPlusFill className="icons"/> </Button>
                   <Button 
+                  onClick={deleteUser}
                   className="mx-3"
                    variant="outlined"
                 color="warning"

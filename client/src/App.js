@@ -8,6 +8,7 @@ import Login from './pages/login/Login'
 import Profile from "./pages/profile/Profile";
 import Help from './pages/help/Help'
 import AddUser from './pages/addUser/AddUser'
+import DeleteUser from './pages/deleteUser/DeleteUser'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Construct our main GraphQL API endpoint
@@ -45,6 +46,7 @@ function App() {
             <Routes>
               {/* <Route path="request" element={<Request />} /> */}
               <Route path="/" element={<Login />} />
+              <Route path="delete user" element={<DeleteUser />} />
               <Route path="/add user" element={<AddUser />} />
               <Route path="/help" element={<Help />} /> 
 

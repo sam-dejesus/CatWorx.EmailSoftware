@@ -7,8 +7,10 @@ const resolvers = {
     Query: {
         users: async () =>{
             return await User.find({})
-        }
-
+        },
+        SearchUsers: async (parent, { SearchUsers }) => {
+          return await User.find({ User});
+      }
 
     },
 
