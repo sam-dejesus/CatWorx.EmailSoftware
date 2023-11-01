@@ -8,9 +8,9 @@ const resolvers = {
         users: async () =>{
             return await User.find({})
         },
-        SearchUsers: async (parent, { SearchUsers }) => {
-          return await User.find({ User});
-      }
+      SearchUsers: async (parent, { employeeID }) => {
+        return await User.find({ employeeID });
+      },
 
     },
 

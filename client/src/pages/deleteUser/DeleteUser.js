@@ -8,8 +8,8 @@ import 'bootstrap'
 
 
 const SEARCH_USERS = gql`
-  query SearchUser($firstName: String, $lastName: String, $employeeID: Int, $email: String) {
-    SearchUsers(firstName: $firstName, lastName: $lastName, employeeID: $employeeID, email: $email) {
+  query SearchUser( $employeeID: Int) {
+    SearchUsers( employeeID: $employeeID) {
       _id
       employeeID
       firstName
@@ -26,11 +26,12 @@ const DeleteUser = () => {
     const [searchQuery, setSearchQuery] = useState("");
     const [searchUser, { loading, data }] = useLazyQuery(SEARCH_USERS)
 
+
     const handleFormSubmit = async (event) => {
-        if (searchQuery.trim() !== "") {
-            searchUser({variables: {SearchUsers: searchQuery}})
-        }
-    }
+      if (searchQuery.trim() !== "") { 
+        searchUser({ variables: { employeeID: parseInt(searchQuery) } });
+      }
+    };
 
     return(
         <Box
@@ -48,17 +49,20 @@ const DeleteUser = () => {
       </Button>
           {loading ? (
         <p>Loading...</p>
-      ) : data && data.SearchUser ? (
+      ) : data && data.SearchUsers ? (
         <ul className="searchResults">
-          {data.SearchUser.map((user) => (
+          {data.SearchUsers.map((user) => (
             <li key={user._id} className="liDiv" onClick={() => {alert("hiiii")}}>
               <p>Name: {`${user.firstName} ${user.lastName}`}</p>
             </li>
           ))}
         </ul>
       ) : (
-        <p></p>
+        <p>No data available.</p>
       )}
+
+
+
     </Stack>
 
 
