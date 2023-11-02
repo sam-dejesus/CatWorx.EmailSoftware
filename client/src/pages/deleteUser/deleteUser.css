@@ -1,0 +1,17 @@
+.searchResultsContainer{
+    margin-top: 10px;
+    width: 100%;
+    border: 1px solid red;
+}
+.searchResult{
+
+}
+
+.stockimg{
+    font-size: 130px;
+    margin: 10px;
+}
+.btn{
+    /* background-color: red !important;
+    color: aliceblue !important; */
+}

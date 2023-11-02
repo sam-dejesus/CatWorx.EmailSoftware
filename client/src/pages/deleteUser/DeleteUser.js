@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import './deleteUser.css'
 import { useLazyQuery, gql } from "@apollo/client";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import 'bootstrap'
+
+import { FaRegUserCircle } from "react-icons/fa";
 
 
 const SEARCH_USERS = gql`
@@ -36,6 +39,7 @@ const DeleteUser = () => {
     return(
         <Box
         component="form"
+        className="searchDiv d-flex flex-column"
         sx={{
           '& > :not(style)': { m: 1, width: '100%' },
         }}
@@ -47,23 +51,29 @@ const DeleteUser = () => {
       <Button variant="contained"  onClick={handleFormSubmit}>
         Search
       </Button>
+          </Stack>
           {loading ? (
         <p>Loading...</p>
       ) : data && data.SearchUsers ? (
-        <ul className="searchResults">
+        <div className="searchResultsContainer">
           {data.SearchUsers.map((user) => (
-            <li key={user._id} className="liDiv" onClick={() => {alert("hiiii")}}>
-              <p>Name: {`${user.firstName} ${user.lastName}`}</p>
-            </li>
+            <div key={user._id} className="searchResult ps-5" onClick={() => {alert("hiiii")}}>
+              <FaRegUserCircle className="stockimg"/>
+              <p>First Name: {user.firstName} </p>
+              <p>Last Name: {user.lastName}</p>
+              <p>ID Number: {user.employeeID}</p>
+              <p>Email: {user.email}</p>
+              <button className="btn btn-danger">Delete</button>
+            </div>
           ))}
-        </ul>
+        </div>
       ) : (
         <p>No data available.</p>
       )}
 
 
 
-    </Stack>
+
 
 
     </Box>
