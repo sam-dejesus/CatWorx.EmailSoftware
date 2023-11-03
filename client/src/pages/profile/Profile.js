@@ -41,7 +41,12 @@ const Profile = () => {
     const deleteUser = ()=>{
       navigate("/delete user")
     }
-  
+  const addAdmin = ()=>{
+    navigate("/add Admin")
+  }
+  const deleteAdmin = ()=>{
+    navigate("/delete Admin")
+  }
     const handleImageChange = (e) => {
       const file = e.target.files[0];
   
@@ -169,12 +174,14 @@ const Profile = () => {
                 <h2>Root User Dashboard</h2>
                 <div className="rootUserOptions options">
                   <Button
+                  onClick={addAdmin}
                   className="mx-3" 
                    variant="outlined"
                 color="warning"
                 type="submit"
                 >add new admin < BsFillPersonPlusFill className="icons"/></Button>
                   <Button
+                  onClick={deleteAdmin}
                   className="mx-3" 
                    variant="outlined"
                 color="warning"

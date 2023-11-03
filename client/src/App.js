@@ -7,8 +7,10 @@ import './App.css';
 import Login from './pages/login/Login'
 import Profile from "./pages/profile/Profile";
 import Help from './pages/help/Help'
-import AddUser from './pages/addUser/AddUser'
-import DeleteUser from './pages/deleteUser/DeleteUser'
+import AddUser from './pages/user/AddUser'
+import DeleteUser from './pages/user/DeleteUser'
+import AddAdmin from './pages/admin/AddAdmin'
+import DeleteAdmin from './pages/admin/DeleteAdmin'
 import "bootstrap/dist/css/bootstrap.min.css";
 
 // Construct our main GraphQL API endpoint
@@ -48,6 +50,8 @@ function App() {
               <Route path="/" element={<Login />} />
               <Route path="delete user" element={<DeleteUser />} />
               <Route path="/add user" element={<AddUser />} />
+              <Route path="/add admin" element={<AddAdmin />} />
+              <Route path="/delete admin" element={<DeleteAdmin />} />
               <Route path="/help" element={<Help />} /> 
 
               {/* <Route path="/signup" element={<Signup />} /> */}
