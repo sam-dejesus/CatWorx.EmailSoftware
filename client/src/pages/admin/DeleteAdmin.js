@@ -56,7 +56,10 @@ const DeleteAdmin = () => {
         <p>Loading...</p>
       ) : data && data.SearchUsers ? (
         <div className="searchResultsContainer">
-          {data.SearchUsers.map((user) => (
+          {data.SearchUsers
+          .filter(user => user.admin === true)
+          .filter(user => user.rootUser === false)
+          .map((user) => (
             <div key={user._id} className="searchResult ps-5" onClick={() => {alert("hiiii")}}>
               <FaRegUserCircle className="stockimg"/>
               <p>First Name: {user.firstName} </p>

@@ -21,6 +21,31 @@ const resolvers = {
       }, 
 
 
+
+      deleteUser: async (parent, { employeeID }) => {
+        try {
+          
+          const user = await User.findOne({ employeeID });
+     
+    
+          if (!user) {
+            
+            return "user not found";
+          }
+    
+         
+          await user.deleteOne();
+    
+          
+          return "it worked";
+        } catch (error) {
+          
+          console.error("Error deleting user:", error);
+          return "test failed";
+        }
+      },
+
+
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
       

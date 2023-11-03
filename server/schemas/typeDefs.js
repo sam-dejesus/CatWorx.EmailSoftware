@@ -26,6 +26,10 @@ const typeDefs = gql`
     messages: [Message]!
   }
 
+
+  
+
+  
   scalar Date
 
   type Auth {
@@ -55,7 +59,12 @@ const typeDefs = gql`
       text: String!
     ): Message
 
+  
+      deleteUser(employeeID: Int!): String
+    
+
     login(email: String!, password: String!): Auth
+
   }
 
   
