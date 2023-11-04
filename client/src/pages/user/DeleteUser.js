@@ -10,8 +10,8 @@ import 'bootstrap'
 import { FaRegUserCircle } from "react-icons/fa";
 
 const DELETE_USER = gql`
-  mutation DeleteUser($employeeID: Int) {
-    deleteUser(employeeID: $employeeID) 
+  mutation DeleteUser($employeeID: Int!) {
+    deleteUser(employeeID: $employeeID)
   }
 `;
 
@@ -43,17 +43,18 @@ const DeleteUser = () => {
     };
 
 
-    const handleDeleteUser = async (employeeID) => {
-     
-      
+    const handleDeleteUser = async ( employeeID) => {
+   
+     console.log("test")
       try {
-        
-         await deleteUser({
-          variables: { employeeID },
+        await deleteUser({
+          variables: { employeeID: parseInt(employeeID) },
         });
+    
 
       } catch (error) {
-      
+        // Handle any errors here
+        console.error("Error deleting user:", error);
       }
     };
 
@@ -86,7 +87,7 @@ const DeleteUser = () => {
               <p>Last Name: {user.lastName}</p>
               <p>ID Number: {user.employeeID}</p>
               <p>Email: {user.email}</p>
-              <button className="btn btn-danger" onClick={() => handleDeleteUser(user.employeeID)}>Delete</button>
+              <button className="btn btn-danger" onClick={()=>{handleDeleteUser(user.employeeID)}}>Delete</button>
             </div>
           ))}
         </div>
