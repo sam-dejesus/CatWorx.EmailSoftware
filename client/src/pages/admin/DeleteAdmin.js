@@ -1,13 +1,23 @@
 import React, { useState } from "react";
 import './admin.css'
-import { useLazyQuery, gql } from "@apollo/client";
+import { useLazyQuery, gql, useMutation  } from "@apollo/client";
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import 'bootstrap'
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { FaRegUserCircle } from "react-icons/fa";
+
+
+const DELETE_USER = gql`
+  mutation DeleteUser($employeeID: Int!) {
+    deleteUser(employeeID: $employeeID)
+  }
+`;
 
 
 const SEARCH_USERS = gql`
@@ -28,13 +38,37 @@ const DeleteAdmin = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [searchAdmin, { loading, data }] = useLazyQuery(SEARCH_USERS)
-
+    const [deleteUser] = useMutation(DELETE_USER);
 
     const handleFormSubmit = async (event) => {
       if (searchQuery.trim() !== "") { 
         searchAdmin({ variables: { employeeID: parseInt(searchQuery) } });
       }
     };
+
+    const handleDeleteUser = async ( employeeID) => {
+   
+      console.log("test")
+       try {
+         await deleteUser({
+           variables: { employeeID: parseInt(employeeID) },
+         });
+     
+         toast.success("User created successfully!", {
+           position: "top-right",
+           autoClose: 3000,
+           hideProgressBar: true,
+         });
+       } catch (error) {
+         // Handle any errors here
+         console.error("Error deleting user:", error);
+       }
+       toast.error("An error occurred while creating the User.", {
+         position: "top-right",
+         autoClose: 3000,
+         hideProgressBar: true,
+       });
+     };
 
     return(
         <Box
@@ -60,13 +94,13 @@ const DeleteAdmin = () => {
           .filter(user => user.admin === true)
           .filter(user => user.rootUser === false)
           .map((user) => (
-            <div key={user._id} className="searchResult ps-5" onClick={() => {alert("hiiii")}}>
+            <div key={user._id} className="searchResult ps-5" >
               <FaRegUserCircle className="stockimg"/>
               <p>First Name: {user.firstName} </p>
               <p>Last Name: {user.lastName}</p>
               <p>ID Number: {user.employeeID}</p>
               <p>Email: {user.email}</p>
-              <button className="btn btn-danger">Delete</button>
+              <button className="btn btn-danger" onClick={()=>{handleDeleteUser(user.employeeID)}}>Delete</button>
             </div>
           ))}
         </div>

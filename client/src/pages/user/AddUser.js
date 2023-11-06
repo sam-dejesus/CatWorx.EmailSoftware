@@ -9,6 +9,8 @@ import SendIcon from '@mui/icons-material/Send';
 import Stack from '@mui/material/Stack';
 import 'bootstrap'
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AddUser = () => {
   const [formState, setFormState] = useState({
@@ -46,8 +48,17 @@ const AddUser = () => {
         variables: { ...formState },
       });
 
-    
+      toast.success("User created successfully!", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+      });
     } catch (e) {
+      toast.error("An error occurred while creating the User.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+      });
       console.error(e);
     }
   };
@@ -68,7 +79,7 @@ return(
 
         <TextField
           required
-          id="outlined-required"
+          id="id"
           label="Employee ID"
           name="employeeID"
           value={formState.employeeID}
@@ -78,18 +89,18 @@ return(
 
         <TextField
           required
-          id="outlined-required"
-          label="First Name"
-          name="firstName"
+          id="first name"
+          label="firstName"
+          name="First Name"
           value={formState.firstName}
           onChange={handleChange}
           
         />
         <TextField
           required
-          id="outlined-disabled"
+          id="last Name"
           label="Last Name"
-          name="lastName"
+          name="Last Name"
           value={formState.lastName}
           onChange={handleChange}
         />
@@ -97,7 +108,7 @@ return(
 
         <TextField
           required
-          id="outlined-disabled"
+          id="email"
           label="Email"
           name="email"
           value={formState.email}
@@ -105,16 +116,7 @@ return(
         />
         
         <br/>
-          {/* <TextField
-          
 
-          id="outlined-multiline-static"
-          label="Reason for submission"
-          multiline
-          rows={8}
-
-          
-        /> */}
     <Stack direction="row" spacing={2} className='mb-3 mt-1'>
       <Button variant="contained" endIcon={<SendIcon />} onClick={handleFormSubmit}>
         Send

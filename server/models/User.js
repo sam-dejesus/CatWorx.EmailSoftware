@@ -1,6 +1,11 @@
 const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
+
+
+
+
+
 const userSchema = new Schema({
     employeeID: {
     type: String,
@@ -28,13 +33,15 @@ const userSchema = new Schema({
     required: true,
     minlength: 5,
   },
+
+
   admin: {
     type: Boolean,
-    required: true
+    default: true
   },
   rootUser: {
     type: Boolean,
-    required: false 
+    default: false 
   }
 });
 

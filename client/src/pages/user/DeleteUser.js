@@ -7,6 +7,9 @@ import Button from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import 'bootstrap'
 
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { FaRegUserCircle } from "react-icons/fa";
 
 const DELETE_USER = gql`
@@ -51,11 +54,20 @@ const DeleteUser = () => {
           variables: { employeeID: parseInt(employeeID) },
         });
     
-
+        toast.success("User created successfully!", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: true,
+        });
       } catch (error) {
         // Handle any errors here
         console.error("Error deleting user:", error);
       }
+      toast.error("An error occurred while creating the User.", {
+        position: "top-right",
+        autoClose: 3000,
+        hideProgressBar: true,
+      });
     };
 
     return(
